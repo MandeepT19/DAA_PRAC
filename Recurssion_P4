@@ -1,15 +1,26 @@
 #include <iostream>
-using namespace std,
+using namespace std;
 
-int factorial(int n){
-    if(n==0||n==1){
-        return 1;
+// Using 'unsigned long long' to support larger factorials (up to 20!)
+unsigned long long factorial(int n) {
+    // Base cases & safety check for negative inputs
+    if (n <= 1) { 
+        return 1; 
     }
-    return n*factorial(n-1);
+    return n * factorial(n - 1); 
 }
-int main(){
+
+int main() {
     int num;
-    cout<<"Enter a number:";
-    cin>>num;
-    cout<<"Factorial of number "<<num<<" is: "<<factorial(num)<<endl;
+    cout << "Enter a non-negative number: ";
+    cin >> num;
+
+    // Input validation
+    if (num < 0) {
+        cout << "Error: Factorial of a negative number is undefined." << endl;
+        return 1; 
+    }
+
+    cout << "Factorial of number " << num << " is: " << factorial(num) << endl;
     return 0;
+}
